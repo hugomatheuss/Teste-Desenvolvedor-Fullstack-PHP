@@ -22,21 +22,34 @@ class EletrodomesticoController extends Controller
         
         return (new EletrodomesticoResource($eletrodomestico))
             ->response()
-            ->setStatusCode(201);
+            ->setStatusCode(201)
+        ;
     }
 
     public function getEletrodomestico(Eletrodomestico $eletrodomestico)
     {
-        //
+        return (new EletrodomesticoResource(Eletrodomestico::find($eletrodomestico)))
+            ->response()
+            ->setStatusCode(200)
+        ;
     }
 
     public function updateEletrodomestico(EletrodomesticoRequest $request, Eletrodomestico $eletrodomestico)
     {
-        //
+        $data = $request->validated();
+
+        $eletrodomestico->update($data);
+
+        return (new EletrodomesticoResource($eletrodomestico))
+            ->response()
+            ->setStatusCode(201)
+        ;
     }
 
-    public function destroyEletrodomestico(Eletrodomestico $eletrodomestico)
+    public function deleteEletrodomestico(Eletrodomestico $eletrodomestico)
     {
-        //
+        $eletrodomestico->delete();
+
+        return response()->json("Deleted", 204);
     }
 }

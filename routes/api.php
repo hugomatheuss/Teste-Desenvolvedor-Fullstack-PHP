@@ -19,4 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('eletrodomesticos', [App\Http\Controllers\EletrodomesticoController::class, 'getAllEletrodomesticos'])->name('api.eletrodomesticos');
+Route::get('eletrodomesticos/{eletrodomestico}', [App\Http\Controllers\EletrodomesticoController::class, 'getEletrodomestico'])->name('api.eletrodomesticos.show');
 Route::post('eletrodomesticos', [App\Http\Controllers\EletrodomesticoController::class, 'storeEletrodomestico'])->name('api.eletrodomesticos.store');
+Route::put('eletrodomesticos/{eletrodomestico}', [App\Http\Controllers\EletrodomesticoController::class, 'updateEletrodomestico'])->name('api.eletrodomesticos.update');
+Route::delete('eletrodomesticos/{eletrodomestico}', [App\Http\Controllers\EletrodomesticoController::class, 'deleteEletrodomestico'])->name('api.eletrodomesticos.delete');
