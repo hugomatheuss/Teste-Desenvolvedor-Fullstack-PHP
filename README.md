@@ -45,8 +45,8 @@ php artisan tests --filter EletrodomesticoTest
 - GET `/api/eletrodomesticos` - Todos os eletrodomesticos
 - GET `/api/eletrodomesticos/{eletrodomestico}` - Um eletrodomestico específico
 - POST `/api/eletrodomesticos` - Cadastra um eletrodomestico
-- PUT `/api/eletrodomesticos{eletrodomestico}` - Altera um eletrodomestico específico
-- DELETE `/api/eletrodomesticos{eletrodomestico}` - Remove um eletrodomestico específico
+- PUT `/api/eletrodomesticos/{eletrodomestico}` - Altera um eletrodomestico específico
+- DELETE `/api/eletrodomesticos/{eletrodomestico}` - Remove um eletrodomestico específico
 
 # Testando no Postman
 
