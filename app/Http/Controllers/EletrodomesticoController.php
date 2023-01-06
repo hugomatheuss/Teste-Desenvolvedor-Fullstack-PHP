@@ -4,52 +4,88 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EletrodomesticoRequest;
 use App\Http\Resources\EletrodomesticoResource;
-use App\Models\Eletrodomestico;
+use App\Services\EletrodomesticoService;
 
 class EletrodomesticoController extends Controller
 { 
-    public function getAllEletrodomesticos()
+    protected $eletrodomesticoService;
+
+    public function __construct(EletrodomesticoService $eletrodomesticoService)
     {
-        $eletrodomesticos = EletrodomesticoResource::collection(Eletrodomestico::all());
-        return response($eletrodomesticos, 200);
+        $this->eletrodomesticoService = $eletrodomesticoService;
+    }
+
+    /**
+     *
+     * @return EletrodomesticoResource
+     */
+    public function index()
+    {
+        $eletrodomesticos = $this->eletrodomesticoService->getAll();
+
+        return EletrodomesticoResource::collection($eletrodomesticos);
     }
     
-    public function storeEletrodomestico(EletrodomesticoRequest $request)
+    /**
+     *
+     * @param EletrodomesticoRequest $request
+     * @return EletrodomesticoResource
+     */
+    public function store(EletrodomesticoRequest $request)
     {
-        $data = $request->validated();
+        $data = $this->eletrodomesticoService
+                    ->create(
+                        $request->validated()
+                    )
+        ;
         
-        $eletrodomestico = Eletrodomestico::create($data);
+        return new EletrodomesticoResource($data);
+    }
+
+    /**
+     *
+     * @param string $id
+     * @return EletrodomesticoResource
+     */
+    public function show(string $id)
+    {
+        $data = $this->eletrodomesticoService
+            ->getOne($id)
+        ;
         
-        return (new EletrodomesticoResource($eletrodomestico))
-            ->response()
-            ->setStatusCode(201)
-        ;
+        return new EletrodomesticoResource($data);
     }
 
-    public function getEletrodomestico(Eletrodomestico $eletrodomestico)
+    /**
+     *
+     * @param EletrodomesticoRequest $request
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function update(EletrodomesticoRequest $request, string $id)
     {
-        return (new EletrodomesticoResource(Eletrodomestico::find($eletrodomestico)))
-            ->response()
-            ->setStatusCode(200)
+        $this->eletrodomesticoService
+            ->update($request->validated())
         ;
+
+        return response()->json([
+            'updated' => true
+        ]);
     }
 
-    public function updateEletrodomestico(EletrodomesticoRequest $request, Eletrodomestico $eletrodomestico)
+    /**
+     *
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function delete(string $id)
     {
-        $data = $request->validated();
-
-        $eletrodomestico->update($data);
-
-        return (new EletrodomesticoResource($eletrodomestico))
-            ->response()
-            ->setStatusCode(201)
+        $this->eletrodomesticoService
+            ->delete($id)
         ;
-    }
 
-    public function deleteEletrodomestico(Eletrodomestico $eletrodomestico)
-    {
-        $eletrodomestico->delete();
-
-        return response()->json("Deleted", 204);
+        return response()->json([
+            "Deleted", 204
+        ]);
     }
 }
