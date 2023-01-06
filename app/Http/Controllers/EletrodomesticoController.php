@@ -65,7 +65,7 @@ class EletrodomesticoController extends Controller
     public function update(EletrodomesticoRequest $request, string $id)
     {
         $this->eletrodomesticoService
-            ->update($request->validated())
+            ->update($request->validated(), $id)
         ;
 
         return response()->json([

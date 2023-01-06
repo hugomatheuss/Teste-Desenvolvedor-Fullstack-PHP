@@ -29,9 +29,9 @@ class EletrodomesticoService implements IService {
         return $this->repository->create($data);
     }
 
-    public function update(array $data)
+    public function update(array $data, string $id)
     {
-        return $this->repository->update($data);
+        return $this->repository->update($data, $id);
     }
 
     public function delete(string $id)

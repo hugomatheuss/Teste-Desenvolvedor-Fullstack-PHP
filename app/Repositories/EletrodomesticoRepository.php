@@ -28,13 +28,17 @@ class EletrodomesticoRepository implements IRepository {
         return $this->entity->create($data);
     }
 
-    public function update(array $data)
+    public function update(array $data, string $id)
     {
+        $this->entity = $this->getOne($id);
+
         return $this->entity->update($data);
     }
 
     public function delete(string $id)
     {
+        $this->entity = $this->getOne($id);
+
         return $this->entity->delete();
     }
 }
