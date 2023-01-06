@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\EletrodomesticoException;
 use App\Http\Requests\EletrodomesticoRequest;
 use App\Http\Resources\EletrodomesticoResource;
 use App\Services\EletrodomesticoService;
+use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EletrodomesticoController extends Controller
 { 
@@ -33,11 +36,13 @@ class EletrodomesticoController extends Controller
      */
     public function store(EletrodomesticoRequest $request)
     {
-        $data = $this->eletrodomesticoService
-                    ->create(
-                        $request->validated()
-                    )
-        ;
+        try {
+            $data = $this->eletrodomesticoService
+                    ->create($request->validated())
+            ;
+        } catch (\Exception $e) {
+            throw new Exception($e->getMessage(), $e->getCode());
+        }
         
         return new EletrodomesticoResource($data);
     }
@@ -49,9 +54,13 @@ class EletrodomesticoController extends Controller
      */
     public function show(string $id)
     {
-        $data = $this->eletrodomesticoService
-            ->getOne($id)
-        ;
+        try {
+            $data = $this->eletrodomesticoService
+                ->getOne($id)
+            ;
+        } catch (ModelNotFoundException $e) {
+            throw new EletrodomesticoException($e->getMessage(), 401);
+        }
         
         return new EletrodomesticoResource($data);
     }
@@ -64,9 +73,13 @@ class EletrodomesticoController extends Controller
      */
     public function update(EletrodomesticoRequest $request, string $id)
     {
-        $this->eletrodomesticoService
-            ->update($request->validated(), $id)
-        ;
+        try {
+            $this->eletrodomesticoService
+                ->update($request->validated(), $id)
+            ;
+        } catch (ModelNotFoundException $e) {
+            throw new EletrodomesticoException($e->getMessage(), 401);
+        }
 
         return response()->json([
             'updated' => true
@@ -80,9 +93,13 @@ class EletrodomesticoController extends Controller
      */
     public function delete(string $id)
     {
-        $this->eletrodomesticoService
-            ->delete($id)
-        ;
+        try {
+            $this->eletrodomesticoService
+                ->delete($id)
+            ;
+        } catch (ModelNotFoundException $e) {
+            throw new EletrodomesticoException($e->getMessage(), 401);
+        }
 
         return response()->json([
             "Deleted", 204
