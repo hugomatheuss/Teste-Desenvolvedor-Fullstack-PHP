@@ -30,15 +30,10 @@ Iniciando o local server
 
 Acessando em http://localhost:8000
 
-
-## Documentação da API
-
-> [Full API Spec]()
-
-
 ----------
-#Testes
-php artisan tests --filter EletrodomesticoTest
+## Testes
+
+php artisan test --filter EletrodomesticoTest
 
 ## Routes
 
@@ -53,11 +48,3 @@ php artisan tests --filter EletrodomesticoTest
     php artisan serve
 
     http://localhost:8000/api
-
-Request headers
-
-| **Required** 	| **Key**              	| **Value**            	|
-|----------	|------------------	|------------------	|
-| Yes      	| Content-Type     	| application/json 	|
-| Yes      	| X-Requested-With 	| XMLHttpRequest   	|
-| Yes 	    | Authorization    	| Token {JWT}      	|
