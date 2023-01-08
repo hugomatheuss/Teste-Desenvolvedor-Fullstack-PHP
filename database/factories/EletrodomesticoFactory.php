@@ -25,7 +25,10 @@ class EletrodomesticoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nome' => $this->faker->nome(),
+            'descricao' => $this->faker->paragraph(),
+            'tensao' => $this->faker->tensao(),
+            'marca' => $this->faker->marca(),
         ];
     }
 }
