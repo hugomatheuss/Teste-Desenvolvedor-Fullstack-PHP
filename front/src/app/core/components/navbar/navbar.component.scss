@@ -1,0 +1,13 @@
+.nav-link.active {
+    font-weight: 600;
+    color: #fff;
+}
+.nav-link {
+    padding-right: 0.25rem;
+    padding-left: 0.25rem;
+    color: #ffffffaf;
+
+    &:hover {
+        color: #fff;
+    }
+}

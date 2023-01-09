@@ -1,0 +1,54 @@
+<div class="container">
+    <h3 class="primary">{{ isRegister ? 'Cadastrar novo' : 'Alterar' }} Eletrodoméstico</h3>
+    <form class="col-lg-4 col-sm-12" [formGroup]="form">
+        <div class="mb-3">
+            <label for="Name" class="form-label">Nome:</label>
+            <input type="email" class="form-control" id="name" placeholder="Nome" formControlName="nome" />
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descrição:</label>
+            <textarea class="form-control" id="description" rows="3" formControlName="descricao"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label me-3">Tensão: </label>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="tensao"
+                    id="voltage110"
+                    value="110"
+                    formControlName="tensao"
+                />
+                <label class="form-check-label" for="voltage110"> 110v </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input
+                    class="form-check-input"
+                    type="radio"
+                    name="tensao"
+                    id="voltage220"
+                    value="220"
+                    formControlName="tensao"
+                />
+                <label class="form-check-label" for="voltage220"> 220v </label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="brand" class="form-label">Marca:</label>
+            <select class="form-select" id="brand" aria-label="Default select example" formControlName="marca">
+                <option value="">Selecione</option>
+                <option value="1">Electrolux</option>
+                <option value="2">Brastemp</option>
+                <option value="3">Fischer</option>
+                <option value="4">Samsung</option>
+                <option value="5">LG</option>
+            </select>
+        </div>
+        <div class="buttons my-5">
+            <button type="button" class="btn btn-primary mx-2" (click)="save()">Salvar</button>
+            <a *ngIf="!isRegister" type="button" class="btn btn-secondary mx-2" routerLink="/list">Voltar</a>
+            <a *ngIf="isRegister" type="button" class="btn btn-secondary mx-2" routerLink="/">Cancelar</a>
+        </div>
+    </form>
+</div>

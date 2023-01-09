@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.primary-bg {
+    background-color: var(--bs-indigo);
+    color: var(--bs-white);
+}
+
+.primary {
+    color: var(--bs-indigo);
+}
+
+.container {
+    padding-top: 64px;
+}
+.btn-primary {
+    background-color: var(--bs-indigo);
+    color: var(--bs-white);
+    border: none;
+
+    &:hover {
+        background-color: var(--bs-purple);
+    }
+}
+
+ul {
+    list-style: none;
+
+    li {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 990px) {
+    .container {
+        padding-top: 32px;
+    }
+}

@@ -1,0 +1,14 @@
+<div class="container">
+    <h3 class="primary">Eletrodomésticos Cadastrados</h3>
+    <div class="row" *ngIf="registeredAppliances.length">
+        <div class="col-xs col-sm col-md-4 col-lg-3" *ngFor="let appliance of registeredAppliances">
+            <app-appliance [data]="appliance" (remove)="deleteItem($event)"></app-appliance>
+        </div>
+    </div>
+    <div class="row" *ngIf="!registeredAppliances.length">
+        <h4>
+            Nenhum Eletrodoméstico cadastrado,
+            <a [routerLink]="routers.CADASTRAR">cadastre um Eletrodoméstico agora.</a>
+        </h4>
+    </div>
+</div>

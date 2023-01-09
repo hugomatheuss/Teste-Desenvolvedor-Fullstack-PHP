@@ -1,0 +1,12 @@
+<div class="card m-2" style="width: 100%">
+    <div class="card-body">
+        <h5 class="card-title">{{ data.nome }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ getBrandName(data.marca) }}</h6>
+        <h6 class="card-subtitle mb-2 text-muted">{{ data.tensao }}</h6>
+        <p class="card-text">{{ data.descricao }}</p>
+        <div class="buttons">
+            <button type="button" class="btn btn-primary mx-2" (click)="redirectToUpdate(data)">Editar</button>
+            <button type="button" class="btn btn-danger mx-2" (click)="remove.emit(data.id)">Excluir</button>
+        </div>
+    </div>
+</div>
