@@ -9,6 +9,7 @@ Entrando no diretório do projeto
     cd Teste-Desenvolvedor-Fullstack-PHP
 
 Para instalar as dependências da API e do Front rode o comando abaixo
+    
     sudo chmod +x ./install.sh
     sudo chmod +x ./start.sh
 
