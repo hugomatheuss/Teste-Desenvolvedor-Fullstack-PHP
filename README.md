@@ -2,11 +2,11 @@
 
 Clonando o repositório
 
-    git clone git@github.com:hugomatheuss/Teste-Desenvolvedor-Fullstack-PHP.git
+    git clone git@github.com:hugomatheuss/laravel-api-with-angular-front.git
 
 Entrando no diretório do projeto
 
-    cd Teste-Desenvolvedor-Fullstack-PHP
+    cd laravel-api-with-angular-front
 
 Para instalar as dependências da API e do Front rode o comando abaixo
     
